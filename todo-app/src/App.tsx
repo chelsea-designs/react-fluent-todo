@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
+import TodoForm from './TodoForm';
 
 function App() {
   return (
-<p>Hi</p>
+    <>
+      <TodoForm/>
+    </>
   );
 }
 
