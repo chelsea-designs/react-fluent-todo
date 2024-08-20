@@ -12,7 +12,7 @@ body {
 }
 
 .todo-item {
-  background-color: #dcdefd;
+  background-color: #ff8686;
   border-radius: 8px;
   margin: 10px;
   padding: 0px 10px;
@@ -20,6 +20,11 @@ body {
   align-items: center;
   justify-content: space-between;
   text-align: center;
+}
+
+.todo-item:has(input:checked) {
+  background-color: #b1f6a8;
+  color: white;
 }
 
 .container {
