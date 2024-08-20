@@ -1,4 +1,4 @@
-import TodoForm from "./TodoForm";
+import TodoForm from "./Components/TodoForm";
 import { useState } from "react";
 import { ITodoItem } from "./Interfaces";
 import {
@@ -7,9 +7,9 @@ import {
   LargeTitle,
   Button,
 } from "@fluentui/react-components";
-import TodoItem from "./TodoItem";
+import TodoItem from "./Components/TodoItem";
 import "./App.css";
-import TodoList from "./TodoList";
+import TodoList from "./Components/TodoList";
 
 function App() {
   const [newTitle, setNewTitle] = useState<string>("");
@@ -47,9 +47,11 @@ function App() {
           />
         </div>
         <div className="todo-list">
-          <TodoList todos={todos}
-                deleteTodo={deleteTodo}
-                toggleComplete={toggleComplete}></TodoList>
+          <TodoList
+            todos={todos}
+            deleteTodo={deleteTodo}
+            toggleComplete={toggleComplete}
+          ></TodoList>
         </div>
       </div>
     </FluentProvider>
