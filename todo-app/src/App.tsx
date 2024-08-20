@@ -5,13 +5,11 @@ import {
   FluentProvider,
   webLightTheme,
   LargeTitle,
-  MessageBar,
-  MessageBarBody,
-  MessageBarTitle,
   Button,
 } from "@fluentui/react-components";
 import TodoItem from "./TodoItem";
 import "./App.css";
+import TodoList from "./TodoList";
 
 function App() {
   const [newTitle, setNewTitle] = useState<string>("");
@@ -48,27 +46,10 @@ function App() {
             setNewDescription={setNewDescription}
           />
         </div>
-        <div className="messages">
-          {todos.length === 0 && (
-            <MessageBar intent="info">
-              <MessageBarBody>
-                <MessageBarTitle>No Tasks To Display</MessageBarTitle>
-                Add a task to begin{" "}
-              </MessageBarBody>
-            </MessageBar>
-          )}
-        </div>
         <div className="todo-list">
-          {todos.map((todo: ITodoItem) => {
-            return (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
+          <TodoList todos={todos}
                 deleteTodo={deleteTodo}
-                toggleComplete={toggleComplete}
-              />
-            );
-          })}
+                toggleComplete={toggleComplete}></TodoList>
         </div>
       </div>
     </FluentProvider>

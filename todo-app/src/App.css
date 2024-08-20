@@ -12,7 +12,6 @@ body {
 }
 
 .todo-item {
-  background-color: #ff8686;
   border-radius: 8px;
   margin: 10px;
   padding: 0px 10px;
@@ -22,8 +21,13 @@ body {
   text-align: center;
 }
 
-.todo-item:has(input:checked) {
+.completed {
   background-color: #b1f6a8;
+  color: white;
+}
+
+.incompleted {
+  background-color: #ff8686;
   color: white;
 }
 
@@ -42,5 +46,4 @@ body {
 
 .btn-submit {
   margin: 10px;
-  color: aqua;
 }

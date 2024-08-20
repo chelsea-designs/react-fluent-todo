@@ -20,14 +20,7 @@ const TodoItem = ({ todo, deleteTodo, toggleComplete }: ITodoItemProps) => {
 
   return (
     <>
-      <div className="todo-item">
-        <Checkbox
-          size="large"
-          shape="circular"
-          onClick={() => {
-            toggleComplete(todo.id);
-          }}
-        />
+      <div className={`todo-item ${todo.completed ? "completed" : "incompleted"}`}>
         <div className="todo-text">
           <Subtitle1 block align="center">
             {todo.title}
@@ -36,7 +29,13 @@ const TodoItem = ({ todo, deleteTodo, toggleComplete }: ITodoItemProps) => {
             {todo.description}
           </Body1>
         </div>
-        <Dialog modalType="alert" open={deleteMode}>
+        <div>
+        <Button appearance='primary'
+          onClick={() => {
+            toggleComplete(todo.id);
+          }}
+        >{`${todo.completed ? "Mark Incomplete" : "Mark Complete"}`} </Button>
+                <Dialog modalType="alert" open={deleteMode}>
           <DialogTrigger disableButtonEnhancement>
             <Button
               icon={<DeleteFilled />}
@@ -79,6 +78,7 @@ const TodoItem = ({ todo, deleteTodo, toggleComplete }: ITodoItemProps) => {
             </DialogBody>
           </DialogSurface>
         </Dialog>
+        </div>
       </div>
     </>
   );

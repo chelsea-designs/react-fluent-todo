@@ -19,3 +19,9 @@ export interface ITodoItemProps {
   deleteTodo(id: string): void;
   toggleComplete(id: string): void;
 }
+
+export interface ITodoListProps {
+  todos: ITodoItem[];
+  deleteTodo(id: string): void;
+  toggleComplete(id: string): void;
+}
