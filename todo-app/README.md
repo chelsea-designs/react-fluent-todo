@@ -13,10 +13,6 @@ A simple and elegant Todo application built with React and Microsoft's Fluent UI
 - 📝 **Filter Tasks**: Click between tabs to filter the todo items by completion status.
 - 🎨 **Beautiful Fluent UI**: Styled using Microsoft’s Fluent UI to ensure a consistent, polished user experience.
 
-## Demo
-
-Check out the live demo [here](https://chelsea-designs.github.io/react-fluent-todo/)!
-
 ## Limitations
 
 This project was developed as part of a time-limited coding task for a job application, so some areas could use further refinement and development. These include:
