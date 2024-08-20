@@ -1,13 +1,28 @@
-import './App.css';
-import TodoForm from './TodoForm';
-import {useState} from 'react';
-import { ITodoItem } from './Interfaces';
+import TodoForm from "./TodoForm";
+import { useState } from "react";
+import { ITodoItem } from "./Interfaces";
+import {
+  FluentProvider,
+  webLightTheme,
+  LargeTitle,
+  MessageBar,
+  MessageBarBody,
+  MessageBarTitle,
+  Button,
+} from "@fluentui/react-components";
+import TodoItem from "./TodoItem";
+import "./App.css";
 
 function App() {
-  const [newTitle, setNewTitle] = useState<string>('')
-  const [newDescription, setNewDescription] = useState<string>('')
-  const [deleteMode, setDeleteMode] = useState(false);
+  const [newTitle, setNewTitle] = useState<string>("");
+  const [newDescription, setNewDescription] = useState<string>("");
   const [todos, setTodos] = useState<ITodoItem[]>([]);
+
+  function deleteTodo(id: string) {
+    const currentTodos = todos.filter((todo) => todo.id !== id);
+
+    return setTodos(currentTodos);
+  }
 
   const toggleComplete = (id: string) => {
     const updatedTodos = todos.map((todo) => {
@@ -19,68 +34,44 @@ function App() {
     setTodos(updatedTodos);
   };
 
-  const deleteTodo = (idToDelete: string): void => {
-    setTodos(
-      todos.filter((todo) => {
-        return todo.id != idToDelete;
-      })
-    );
-  };
-
-
   return (
-    <>
-    <div className='hero-section'>
-    <h1>Let's get it done!</h1>
-    <TodoForm todos={todos} setTodos={setTodos} newTitle={newTitle} newDescription={newDescription} setNewTitle={setNewTitle} setNewDescription={setNewDescription}/>
-    </div>
-      <div className='todoList'>
-      {todos.length === 0 && "No to do list items to display"}
-      {todos.map((todo: ITodoItem, key: number) => {
-        return (
-          <ul  key={key} className='list'>
-            <li className='todo-list-item'>
-            <input type='checkbox' onClick={() => {toggleComplete(todo.id)}}/>
-            <span>{todo.title}</span>
-            <span>{todo.description}</span>
-            {deleteMode ? (
-        <>
-          <p>really delete?</p>
-          <button
-            type="button"
-            onClick={() => {
-              setDeleteMode(false);
-            }}
-          >
-            cancel
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              deleteTodo(todo.id);
-              setDeleteMode(false);
-            }}
-          >
-            yes, delete
-          </button>
-        </>
-      ) : (
-        <button
-          type="button"
-          onClick={() => {
-            setDeleteMode(true);
-          }}
-        >
-          delete
-        </button>
-      )}
-            </li>
-          </ul>
-        )
-
-      })}
+    <FluentProvider theme={webLightTheme}>
+      <div className="container">
+        <div className="hero-section">
+          <LargeTitle>Todo List</LargeTitle>
+          <TodoForm
+            todos={todos}
+            setTodos={setTodos}
+            newTitle={newTitle}
+            newDescription={newDescription}
+            setNewTitle={setNewTitle}
+            setNewDescription={setNewDescription}
+          />
+        </div>
+        <div className="messages">
+          {todos.length === 0 && (
+            <MessageBar intent="info">
+              <MessageBarBody>
+                <MessageBarTitle>No Tasks To Display</MessageBarTitle>
+                Add a task to begin{" "}
+              </MessageBarBody>
+            </MessageBar>
+          )}
+        </div>
+        <div className="todo-list">
+          {todos.map((todo: ITodoItem) => {
+            return (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                deleteTodo={deleteTodo}
+                toggleComplete={toggleComplete}
+              />
+            );
+          })}
+        </div>
       </div>
-    </>
+    </FluentProvider>
   );
 }
 
