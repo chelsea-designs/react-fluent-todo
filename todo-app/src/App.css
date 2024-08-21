@@ -14,10 +14,11 @@ body {
 .todo-item {
   border-radius: 8px;
   margin: 10px;
-  padding: 10px 10px;
+  padding: 0px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
 }
 
 .completed {
@@ -43,17 +44,6 @@ body {
   box-sizing: border-box;
 }
 
-.create-todo-form {
+.btn-submit {
   margin: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-
-.messages {
-  margin: 10px;
-}
-
-.btn-toggle {
-  margin-right: 5px !important;
 }
