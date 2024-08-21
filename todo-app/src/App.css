@@ -11,7 +11,7 @@ body {
   text-align: center;
 }
 
-.todo-item {
+.task-item {
   border-radius: 8px;
   margin: 10px;
   padding: 10px 10px;
@@ -20,12 +20,12 @@ body {
   justify-content: space-between;
 }
 
-.completed {
+.isComplete {
   background-color: #b1f6a8;
   color: white;
 }
 
-.incompleted {
+.isIncomplete {
   background-color: #ff8686;
   color: white;
 }
@@ -43,7 +43,7 @@ body {
   box-sizing: border-box;
 }
 
-.create-todo-form {
+.create-task-form {
   margin: 10px;
   display: flex;
   justify-content: space-around;
