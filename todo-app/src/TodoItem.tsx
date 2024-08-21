@@ -22,10 +22,10 @@ const TodoItem = ({ todo, deleteTodo, toggleComplete }: ITodoItemProps) => {
     <>
       <div className={`todo-item ${todo.completed ? "completed" : "incompleted"}`}>
         <div className="todo-text">
-          <Subtitle1 block align="center">
+          <Subtitle1 block>
             {todo.title}
           </Subtitle1>
-          <Body1 block align="center">
+          <Body1 block>
             {todo.description}
           </Body1>
         </div>

@@ -7,7 +7,6 @@ import {
   LargeTitle,
   Button,
 } from "@fluentui/react-components";
-import TodoItem from "./TodoItem";
 import "./App.css";
 import TodoList from "./TodoList";
 

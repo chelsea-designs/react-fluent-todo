@@ -44,6 +44,18 @@ body {
   box-sizing: border-box;
 }
 
-.btn-submit {
+.messages {
   margin: 10px;
 }
+
+.create-todo-form {
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.btn-toggle {
+  margin-right: 5px !important;
+}
+
