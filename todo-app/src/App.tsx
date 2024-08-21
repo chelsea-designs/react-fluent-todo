@@ -1,35 +1,35 @@
-import TaskForm from "./Components/TaskForm";
+import TodoForm from "./Components/TodoForm";
 import { useState } from "react";
-import { ITaskItem } from "./Interfaces";
+import { ITodoItem } from "./Interfaces";
 import {
   FluentProvider,
   webLightTheme,
   LargeTitle,
   Button,
 } from "@fluentui/react-components";
-import TaskItem from "./Components/TaskItem";
+import TodoItem from "./Components/TodoItem";
 import "./App.css";
-import TaskList from "./Components/TaskList";
+import TodoList from "./Components/TodoList";
 
 function App() {
-  const [newTaskTitle, setNewTaskTitle] = useState<string>("");
-  const [newDescription, setNewTaskDescription] = useState<string>("");
-  const [taskList, setTaskList] = useState<ITaskItem[]>([]);
+  const [newTitle, setNewTitle] = useState<string>("");
+  const [newDescription, setNewDescription] = useState<string>("");
+  const [todos, setTodos] = useState<ITodoItem[]>([]);
 
-  function handleDeleteTask(id: string) {
-    const currentTaskList = taskList.filter((task) => task.id !== id);
+  function deleteTodo(id: string) {
+    const currentTodos = todos.filter((todo) => todo.id !== id);
 
-    return setTaskList(currentTaskList);
+    return setTodos(currentTodos);
   }
 
-  const toggleTaskCompletion = (id: string) => {
-    const updatedTaskList = taskList.map((task) => {
-      if (task.id === id) {
-        return { ...task, isComplete: !task.isComplete };
+  const toggleComplete = (id: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
       }
-      return task;
+      return todo;
     });
-    setTaskList(updatedTaskList);
+    setTodos(updatedTodos);
   };
 
   return (
@@ -37,21 +37,21 @@ function App() {
       <div className="container">
         <div className="hero-section">
           <LargeTitle>Todo List</LargeTitle>
-          <TaskForm
-            taskList={taskList}
-            setTaskList={setTaskList}
-            newTaskTitle={newTaskTitle}
+          <TodoForm
+            todos={todos}
+            setTodos={setTodos}
+            newTitle={newTitle}
             newDescription={newDescription}
-            setNewTaskTitle={setNewTaskTitle}
-            setNewTaskDescription={setNewTaskDescription}
+            setNewTitle={setNewTitle}
+            setNewDescription={setNewDescription}
           />
         </div>
-        <div className="task-list">
-          <TaskList
-            taskList={taskList}
-            handleDeleteTask={handleDeleteTask}
-            toggleTaskCompletion={toggleTaskCompletion}
-          ></TaskList>
+        <div className="todo-list">
+          <TodoList
+            todos={todos}
+            deleteTodo={deleteTodo}
+            toggleComplete={toggleComplete}
+          ></TodoList>
         </div>
       </div>
     </FluentProvider>

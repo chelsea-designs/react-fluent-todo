@@ -1,27 +1,27 @@
-export interface ITaskItem {
+export interface ITodoItem {
   id: string;
   title: string;
   description?: string;
-  isComplete: boolean;
+  completed: boolean;
 }
 
-export interface ITaskFormProps {
-  taskList: ITaskItem[];
-  newTaskTitle: string;
+export interface ITodoFormProps {
+  todos: ITodoItem[];
+  newTitle: string;
   newDescription: string;
-  setNewTaskTitle(title: string): void;
-  setNewTaskDescription(description: string): void;
-  setTaskList(taskList: ITaskItem[]): void;
+  setNewTitle(title: string): void;
+  setNewDescription(description: string): void;
+  setTodos(todos: ITodoItem[]): void;
 }
 
-export interface ITaskItemProps {
-  task: ITaskItem;
-  handleDeleteTask(id: string): void;
-  toggleTaskCompletion(id: string): void;
+export interface ITodoItemProps {
+  todo: ITodoItem;
+  deleteTodo(id: string): void;
+  toggleComplete(id: string): void;
 }
 
-export interface ITaskListProps {
-  taskList: ITaskItem[];
-  handleDeleteTask(id: string): void;
-  toggleTaskCompletion(id: string): void;
+export interface ITodoListProps {
+  todos: ITodoItem[];
+  deleteTodo(id: string): void;
+  toggleComplete(id: string): void;
 }
